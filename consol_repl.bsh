@@ -1,0 +1,12 @@
+echo ""
+echo "About to create the replicate to move NoSQL / temperature data" echo "from the Pi to the \"cloud\" server"
+cdr define repl --master=g_inst4 -c g_inst4 \
+--conflict=always --fullrow=y --ats --ris agg_temp_move_13 \ "stu_13@g_inst4:stu_13.sensors_avg" "select * from sensors_avg" \ "iot@g_stu13:informix.sensors_avg" "select * from sensors_avg"
+echo ""
+echo "Replicate defined, now starting it"
+cdr start repl agg_temp_move_13
+sleep 5
+echo "Pi to server replication operational"
+echo ""
+cdr list repl agg_temp_move_13
+echo ""

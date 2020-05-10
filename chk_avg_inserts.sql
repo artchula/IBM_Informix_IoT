@@ -1,0 +1,1 @@
+select first 5 id cust_no, tstamp, json_data::json sensor_data from sensors_avg_vti order by 2 desc

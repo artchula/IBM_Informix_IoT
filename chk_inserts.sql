@@ -1,0 +1,1 @@
+select first 5 tstamp, json_data::json sensor_data from sensors_vti order by 1 desc
